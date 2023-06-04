@@ -1,5 +1,11 @@
 #include "inconceivable.h"
 
+inconceivable& inconceivable::operator=(inconceivable&& moved) noexcept {
+	var_ = std::move(moved.var_); 
+
+	return *this;
+}
+
 inconceivable operator+(inconceivable& left, inconceivable& right) {
 	boost::multiprecision::cpp_int left_(left.var_), right_(right.var_);
 	boost::multiprecision::cpp_int res = left_ + right_;
